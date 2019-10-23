@@ -1,3 +1,3 @@
 // start:ng42.barrel
-export * from './baseAPI.class';
+export * from './booking.component';
 // end:ng42.barrel

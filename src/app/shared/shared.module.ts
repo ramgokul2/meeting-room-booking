@@ -23,16 +23,14 @@ import { FormErrorWrapperComponent } from '@app/shared/form-error-wrapper/form-e
     BreadcrumbComponent,
     BlankComponent,
     FullComponent,
-    ButtonLoaderComponent,
-    FormErrorWrapperComponent
+    ButtonLoaderComponent
   ],
   exports: [
     SpinnerComponent,
     BreadcrumbComponent,
     BlankComponent,
     FullComponent,
-    ButtonLoaderComponent,
-    FormErrorWrapperComponent
+    ButtonLoaderComponent
   ],
   entryComponents: [],
   providers: []

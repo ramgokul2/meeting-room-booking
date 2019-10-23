@@ -3,8 +3,8 @@
     <div class="top-wrapper"><a href="#/"><b>Meeting Room Booking</b></a></div>
   </section>
   <div class="schedule-button">
-    <p-button label="Check Rooms" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx)"></p-button>
-    <p-button label="Check Schedule" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx)"></p-button>
+    <p-button label="Book Rooms" class="ui-button-raised ui-button-info" (click) ="activeItem = 'Book'"></p-button>
+    <p-button label="View Booked Records" class="ui-button-raised ui-button-info" (click) ="activeItem = 'View'"></p-button>
   </div>
 
   <section id="booking-views">
@@ -13,7 +13,7 @@
         <div class="flex-content">
           <h6>{{room.name}}</h6>
           <p-button label="View Details" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx)"></p-button>
-          <p-button label="Book Room" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx)"></p-button>
+          <p-button label="Check Availability" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx, true)"></p-button>
           <p-button label="Book" class="ui-button-raised ui-button-info" (click) ="openModal(room, idx)"></p-button>
         </div>
       </div>
@@ -27,6 +27,7 @@
       <th>Date</th>
       <th>FromTime</th>
       <th>ToTime</th>
+      <th>Delete</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-room>
@@ -36,6 +37,8 @@
       <td>{{room.date}}</td>
       <td>{{room.fromTime}}</td>
       <td>{{room.toTime}}</td>
+      <td><button type="button" pButton (click)="deleteRecord(i)" class="ui-button-danger"
+              icon="fa-trash"></button></td>
     </tr>
   </ng-template>
 </p-table>
@@ -46,7 +49,7 @@
 <div id="modal" [ngStyle]="{'display': isOpen ? 'block' : 'none'}">
   <div id="modal-content">
     <form [formGroup]="bookingForm" style="text-align: center; padding: 15px;">
-      <div class="form-group" style="margin: 0 2rem 2rem 0; display: inline-block;">
+      <div class="form-group" style="margin: 0 2rem 2rem 0; display: inline-block;" *ngIf="!check">
         <input type="text" name="first_name" required [formControl]="bookingForm.controls['username']"
                class="form-control" placeholder="Enter Name"
                style="border: none; border-bottom: 1px solid lightgrey;">
@@ -71,12 +74,15 @@
                class="form-control"
                style="border: none; border-bottom: 1px solid lightgrey;">
       </div>
-      <div class="form-group" style="margin: 0 2rem 2rem 0; display: inline-block;">
+      <div class="form-group" style="margin: 0 2rem 2rem 0; display: inline-block;" *ngIf="!check">
         <textarea [formControl]="bookingForm.controls['agenda']"
                class="form-control"
                style="border: none; border-bottom: 1px solid lightgrey;"></textarea>
       </div>
-      <button (click)="bookRoom(bookingForm.value)">BOOK</button>
+      <button *ngIf="!check; else noCheck" (click)="bookRoom(bookingForm.value)">BOOK</button>
+      <ng-template #noCheck3>
+        <button (click)="checkAvailability(bookingForm.value)">Check</button>
+      </ng-template>
     </form>
 
     <button id="close" (click)="closeModal()">Close Modal</button>

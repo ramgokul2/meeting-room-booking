@@ -9,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutes } from '@app/app.routing';
 import { AppComponent } from '@app/app.component';
-import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { SharedModule } from '@app/shared';
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(AppRoutes),
-    CoreModule,
     SharedModule
   ],
   bootstrap: [AppComponent]

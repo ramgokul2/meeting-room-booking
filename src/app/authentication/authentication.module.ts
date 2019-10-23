@@ -8,8 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { NotFoundComponent } from '@app/authentication/404/not-found.component';
 import { AuthenticationRoutes } from '@app/authentication/authentication.routing';
-import { LoginComponent } from '@app/authentication/login/login.component';
-import { SignupComponent } from '@app/authentication/signup/signup.component';
+import { BookingComponent } from '@app/authentication/booking/booking.component';
 import { SharedModule } from '@app/shared';
 
 @NgModule({
@@ -24,6 +23,6 @@ import { SharedModule } from '@app/shared';
     ButtonModule,
     RouterModule.forChild(AuthenticationRoutes)
   ],
-  declarations: [NotFoundComponent, SignupComponent, LoginComponent]
+  declarations: [NotFoundComponent, BookingComponent]
 })
 export class AuthenticationModule {}

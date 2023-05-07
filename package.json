@@ -64,7 +64,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^3.2.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "luxon": "^1.17.2",
     "primeicons": "^2.0.0",
     "primeng": "^8.0.4",
